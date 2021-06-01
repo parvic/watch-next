@@ -22,7 +22,7 @@ export async function getSearchResult(movieName: string) {
   }
 }
 
-export const getMovieDetail = async (movieId: string) => {
+export async function getMovieDetail(movieId: string) {
   try {
     const { data, status } = await api.get(
       `/movie/${movieId}?api_key=34d6e856a918914f65527a936f73f3f2&language=pt-BR`,
@@ -31,4 +31,15 @@ export const getMovieDetail = async (movieId: string) => {
   } catch (error) {
     return { error };
   }
-};
+}
+
+export async function getCredits(movieId: number) {
+  try {
+    const { data, status } = await api.get(
+      `/movie/${movieId}/credits?api_key=34d6e856a918914f65527a936f73f3f2&language=pt-BR`,
+    );
+    return { data, status };
+  } catch (error) {
+    return { error };
+  }
+}
