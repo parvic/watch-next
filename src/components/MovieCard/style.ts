@@ -10,7 +10,7 @@ export const MovieCardContainer = styled.div`
 
   margin: 0.5rem;
 
-  a {
+  div {
     position: relative;
 
     img {

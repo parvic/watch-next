@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react';
 
 import * as S from './style';
@@ -5,20 +6,20 @@ import * as S from './style';
 interface MovieCardProps {
   id: number;
   title: string;
-  release: string;
+  release_date: string;
   poster: string;
 }
 
-export function MovieCard({ title, release, poster, id }: MovieCardProps) {
+export function MovieCard({ title, release_date, poster, id }: MovieCardProps) {
   return (
     <S.MovieCardContainer>
-      <a href={`/movie/${id}`}>
-        <img src={poster} alt="poster" />
+      <div>
+        <img src={poster && poster} alt="poster" />
         <div>
-          <p className="title">{title}</p>
-          <p className="release">{release}</p>
+          <p className="title">{title && title}</p>
+          <p className="release">{release_date && release_date}</p>
         </div>
-      </a>
+      </div>
       {/* <a href="https://www.themoviedb.org/" className="title">
         <p>Title</p>
       </a> */}

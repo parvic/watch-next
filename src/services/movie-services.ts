@@ -1,9 +1,9 @@
 import { api } from './api';
 
-export async function getTrendingMovies() {
+export async function getTrendingMovies(pageNumber: number) {
   try {
     const { data, status } = await api.get(
-      `/discover/movie?api_key=34d6e856a918914f65527a936f73f3f2&language=pt-BR&sort_by=popularity.desc&page=1`,
+      `/discover/movie?api_key=34d6e856a918914f65527a936f73f3f2&language=pt-BR&sort_by=popularity.desc&page=${pageNumber}`,
     );
     return { data, status };
   } catch (error) {

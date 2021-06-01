@@ -11,6 +11,8 @@ interface MovieContextData {
   movies: MovieProps[];
   queryMovies: MovieProps[];
   movieDetail: MovieDetailProps | undefined;
+  fetchTrendingMovies: (page: number) => void;
+  updateTrendingMovies: (page: number) => void;
   handleMovieDetail: (movieDetail: MovieDetailProps) => void;
   handleQueryMovies: (queryMovies: MovieProps[]) => void;
   handleSearchMovies: (movieName: string) => void;
@@ -67,6 +69,7 @@ interface SocialProps {
 export const MovieContext = createContext({} as MovieContextData);
 
 export function MovieProvider({ children }: MovieProviderProps) {
+  // const [page, setPage] = useState(1);
   const [movies, setMovies] = useState<MovieProps[]>([]);
   const [queryMovies, setQueryMovies] = useState<MovieProps[]>([]);
   const [movieDetail, setMovieDetail] = useState<MovieDetailProps>();
@@ -75,12 +78,19 @@ export function MovieProvider({ children }: MovieProviderProps) {
     setQueryMovies(queryMovies);
   }
 
-  async function fetchTrendingMovies() {
-    const { data } = await getTrendingMovies();
+  async function fetchTrendingMovies(page: number) {
+    const { data } = await getTrendingMovies(page);
     setMovies(data.results);
+    console.log(movies);
   }
 
-  async function handleMovieDetail(mDetail: MovieDetailProps) {
+  async function updateTrendingMovies(page: number) {
+    const { data } = await getTrendingMovies(page);
+    setMovies([...movies, ...data.results]);
+    console.log(movies);
+  }
+
+  async function handleMovieDetail() {
     setMovieDetail(movieDetail);
   }
 
@@ -90,7 +100,7 @@ export function MovieProvider({ children }: MovieProviderProps) {
   }
 
   useEffect(() => {
-    fetchTrendingMovies();
+    // fetchTrendingMovies();
   }, []);
 
   return (
@@ -99,6 +109,8 @@ export function MovieProvider({ children }: MovieProviderProps) {
         movies,
         queryMovies,
         movieDetail,
+        fetchTrendingMovies,
+        updateTrendingMovies,
         handleMovieDetail,
         handleQueryMovies,
         handleSearchMovies,
