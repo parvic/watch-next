@@ -68,7 +68,6 @@ export default function Details() {
             genres={movieDetail.genres}
           />
         )}
-        {movieDetail && <Credits movieId={movieDetail.id} />}
         {movieDetail && <SimilarMovies movieId={movieDetail.id} />}
       </S.MovieDetailsContainer>
     </>
@@ -124,6 +123,7 @@ function MovieInfo({
         </div>
         <p className="sinopse">{overview}</p>
         <Social movieId={id} />
+        <Credits movieId={id} />
       </div>
       <div className="poster">
         {smallScreen ? (

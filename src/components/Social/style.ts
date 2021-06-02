@@ -6,6 +6,7 @@ export const SocialContainer = styled.div`
   div {
     display: flex;
     margin-top: 1rem;
+    margin-bottom: 1.5rem;
 
     a {
       text-decoration: none;

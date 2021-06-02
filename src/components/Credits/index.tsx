@@ -1,8 +1,11 @@
 /* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
+
 import { getCredits } from '../../services/movie-services';
 
 import * as S from './style';
+import theme from '../../styles/theme/light';
 
 interface CreditsProps {
   movieId: number;
@@ -36,6 +39,14 @@ export function Credits({ movieId }: CreditsProps) {
     setMovieCrew(data.crew);
   }
 
+  const smallScreen = useMediaQuery({
+    query: `(max-width: ${theme.screenSize.mobileL})`,
+  });
+
+  const bigScreen = useMediaQuery({
+    query: `(max-width: ${theme.screenSize.tablet})`,
+  });
+
   useEffect(() => {
     fetchMovieCast(movieId);
     fetchMovieCrew(movieId);
@@ -47,7 +58,7 @@ export function Credits({ movieId }: CreditsProps) {
         <h2>Elenco</h2>
         <div className="cast-card">
           {movieCast &&
-            movieCast.slice(0, 5).map(cast => {
+            movieCast.slice(0, smallScreen ? 4 : 5).map(cast => {
               return (
                 <div key={cast.id}>
                   <img

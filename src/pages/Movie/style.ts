@@ -87,12 +87,17 @@ export const MovieInfoContainer = styled.div`
   }
 
   @media (max-width: ${theme.screenSize.mobileL}) {
-    grid-template-columns: none;
+    display: flex;
     position: relative;
-    grid-template-rows: 1fr 3fr;
+    /* grid-template-rows: 1fr 3fr;
+    grid-template-columns: none;
     grid-template-areas:
       'poster'
-      'text';
+      'text'; */
+    .movie-general {
+      margin-top: 8rem;
+      padding: 0 1rem;
+    }
 
     .bullet-info {
       & > span {
