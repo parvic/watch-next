@@ -3,8 +3,28 @@ import styled from 'styled-components';
 import theme from '../../styles/theme/light';
 
 export const HomeContainer = styled.div`
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
+  /* padding: 1rem; */
+
+  position: relative;
+
+  & > img {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(17, 17, 17, 1),
+      rgba(17, 17, 17, 0)
+    );
+  }
+
+  /* background-image: linear-gradient(to bottom, transparent, #111),
+    url('https://image.tmdb.org/t/p/w1280/hJuDvwzS0SPlsE6MNFOpznQltDZ.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: top; */
 `;
 
 export const HomeMain = styled.main`
@@ -20,7 +40,8 @@ export const HomeMain = styled.main`
 
 export const FeaturedMovie = styled.div`
   width: 100%;
-  height: 300px;
+  min-height: 500px;
+  max-height: 600px;
 
   display: flex;
   flex-direction: column;

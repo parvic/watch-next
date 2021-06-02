@@ -7,8 +7,8 @@ import React, {
   useState,
 } from 'react';
 import { Link } from 'react-router-dom';
-import InfiniteScroll from 'react-infinite-scroller';
 
+import { url } from 'inspector';
 import { MovieContext } from '../../context/MovieContext';
 import { Header } from '../../components/Header';
 import { MovieCard } from '../../components/MovieCard';
@@ -23,8 +23,13 @@ interface MovieProps {
 }
 
 export default function Home() {
-  const { movies, fetchTrendingMovies, updateTrendingMovies } =
-    useContext(MovieContext);
+  const {
+    movies,
+    fetchFeaturedMovie,
+    featuredMovie,
+    fetchTrendingMovies,
+    updateTrendingMovies,
+  } = useContext(MovieContext);
   const [page, setPage] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);
   const [firstLoad, setFirstLoad] = useState<boolean>(false);
@@ -50,6 +55,7 @@ export default function Home() {
 
   useEffect(() => {
     if (page === 1) {
+      fetchFeaturedMovie();
       fetchTrendingMovies(page);
       setFirstLoad(true);
     }
@@ -65,13 +71,27 @@ export default function Home() {
   // poster sizes
   return (
     <>
-      <S.HomeContainer>
+      <S.HomeContainer
+      // style={{
+      //   backgroundImage:
+      //     featuredMovie &&
+      //     `url( https://image.tmdb.org/t/p/w1280${featuredMovie.backdrop_path})`,
+      // }}
+      >
+        {featuredMovie && (
+          <img
+            src={`https://image.tmdb.org/t/p/w1280${featuredMovie.backdrop_path}`}
+            alt="Featured Movie"
+          />
+        )}
         <Header />
-        <FeaturedMovie
-          id={movies && movies[0].id}
-          title={movies[0].title}
-          backdrop_path={movies[0].backdrop_path}
-        />
+        {featuredMovie && (
+          <FeaturedMovie
+            id={featuredMovie.id}
+            title={featuredMovie.title}
+            backdrop_path={featuredMovie.backdrop_path}
+          />
+        )}
         <S.HomeMain>
           {movies.slice(firstLoad ? 1 : 0).map(movie => {
             return (

@@ -9,11 +9,13 @@ import {
 
 interface MovieContextData {
   movies: MovieProps[];
+  featuredMovie: MovieProps | undefined;
   queryMovies: MovieProps[];
   movieDetail: MovieDetailProps | undefined;
   fetchTrendingMovies: (page: number) => void;
   updateTrendingMovies: (page: number) => void;
   handleMovieDetail: (movieDetail: MovieDetailProps) => void;
+  fetchFeaturedMovie: () => void;
   handleQueryMovies: (queryMovies: MovieProps[]) => void;
   handleSearchMovies: (movieName: string) => void;
   // fetchMovieDetail: (mId: string) => void;
@@ -45,22 +47,6 @@ interface MovieDetailProps {
   // social: SocialProps[];
 }
 
-interface GenreProps {
-  id: number;
-  name: string;
-}
-
-interface CastProps {
-  id: number;
-  name: string;
-}
-
-interface CrewProps {
-  id: number;
-  name: string;
-  job: string;
-}
-
 interface SocialProps {
   facebook_id: string;
   instagram_id: string;
@@ -70,8 +56,8 @@ interface SocialProps {
 export const MovieContext = createContext({} as MovieContextData);
 
 export function MovieProvider({ children }: MovieProviderProps) {
-  // const [page, setPage] = useState(1);
   const [movies, setMovies] = useState<MovieProps[]>([]);
+  const [featuredMovie, setFeaturedMovie] = useState<MovieProps>();
   const [queryMovies, setQueryMovies] = useState<MovieProps[]>([]);
   const [movieDetail, setMovieDetail] = useState<MovieDetailProps>();
 
@@ -91,6 +77,11 @@ export function MovieProvider({ children }: MovieProviderProps) {
     console.log(movies);
   }
 
+  async function fetchFeaturedMovie() {
+    const { data } = await getTrendingMovies(2);
+    setFeaturedMovie(data.results[0]);
+  }
+
   async function handleMovieDetail() {
     setMovieDetail(movieDetail);
   }
@@ -101,18 +92,20 @@ export function MovieProvider({ children }: MovieProviderProps) {
   }
 
   useEffect(() => {
-    // fetchTrendingMovies();
+    // fetchFeaturedMovie();
   }, []);
 
   return (
     <MovieContext.Provider
       value={{
         movies,
+        featuredMovie,
         queryMovies,
         movieDetail,
         fetchTrendingMovies,
         updateTrendingMovies,
         handleMovieDetail,
+        fetchFeaturedMovie,
         handleQueryMovies,
         handleSearchMovies,
         // fetchMovieDetail,
