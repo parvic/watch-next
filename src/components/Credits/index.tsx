@@ -58,13 +58,13 @@ export function Credits({ movieId }: CreditsProps) {
         <h2>Elenco</h2>
         <div className="cast-card">
           {movieCast &&
-            movieCast.slice(0, smallScreen ? 4 : 5).map(cast => {
+            movieCast.slice(0, 5).map(cast => {
               return (
                 <div key={cast.id}>
                   <img
                     style={{
-                      width: '5rem',
-                      height: '5rem',
+                      width: smallScreen ? '3rem' : '5rem',
+                      height: smallScreen ? '3rem' : '5rem',
                       objectFit: 'cover',
                     }}
                     src={`https://image.tmdb.org/t/p/w185${cast.profile_path}`}

@@ -103,8 +103,8 @@ export const FeaturedMovie = styled.div`
   }
 
   @media (max-width: ${theme.screenSize.mobileL}) {
-    min-height: 200px;
-    max-height: 300px;
+    min-height: 300px;
+    max-height: 400px;
 
     h1 {
       margin-left: 3rem;

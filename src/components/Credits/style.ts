@@ -5,7 +5,6 @@ import theme from '../../styles/theme/light';
 export const MovieCrewContainer = styled.div`
   display: flex;
   align-items: center;
-  flex: 1;
 
   .cast {
     h2 {
@@ -54,7 +53,6 @@ export const MovieCrewContainer = styled.div`
     .director {
       grid-area: director;
       margin-left: auto;
-
       font-weight: 600;
     }
 
@@ -65,7 +63,6 @@ export const MovieCrewContainer = styled.div`
     .writers {
       grid-area: writers;
       margin-left: auto;
-
       font-weight: 600;
     }
 
@@ -81,15 +78,28 @@ export const MovieCrewContainer = styled.div`
   }
 
   @media (max-width: ${theme.screenSize.mobileL}) {
+    display: flex;
     flex-direction: column;
 
-    .cast {
-      .cast-card {
-        & > div {
-          img {
-            width: 3rem;
-          }
-        }
+    .crew {
+      max-width: 100%;
+
+      .director {
+        grid-area: director;
+        font-weight: 600;
+      }
+
+      .director-name {
+        grid-area: directorName;
+      }
+
+      .writers {
+        grid-area: writers;
+        font-weight: 600;
+      }
+
+      .writers-names {
+        grid-area: writersNames;
       }
     }
   }

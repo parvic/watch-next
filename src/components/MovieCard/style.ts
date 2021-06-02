@@ -72,6 +72,19 @@ export const MovieCardContainer = styled.div`
       width: 110px;
       height: 163px;
     }
+    .title {
+      position: absolute;
+      /* left: 0;
+      bottom: 0; */
+      margin-bottom: 0.25rem;
+
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.5rem;
+      opacity: 0;
+
+      color: #fff; //${theme.colors.title};
+    }
   }
 
   @media (max-width: ${theme.screenSize.tablet}) {

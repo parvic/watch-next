@@ -97,6 +97,11 @@ export const MovieInfoContainer = styled.div`
     .movie-general {
       margin-top: 8rem;
       padding: 0 1rem;
+
+      h1 {
+        font-size: 2rem;
+        line-height: 2rem;
+      }
     }
 
     .bullet-info {

@@ -23,7 +23,7 @@ export default function SimilarMovies({ movieId }: SimilarMoviesProps) {
         <h2>Filmes Recomendados</h2>
         <div>
           {similarMovies &&
-            similarMovies.slice(0, 8).map(similar => (
+            similarMovies.map(similar => (
               <Link key={similar.id} to={`/movie/${similar.id}`}>
                 <MovieCard
                   id={similar.id}

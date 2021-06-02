@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import theme from '../../styles/theme/light';
+
 export const SimilarMoviesContainer = styled.div`
   max-width: 100%;
 
@@ -11,11 +13,26 @@ export const SimilarMoviesContainer = styled.div`
 
   div {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: flex-start;
 
     a {
       margin: 1rem;
+    }
+  }
+
+  @media (max-width: ${theme.screenSize.laptop}) {
+  }
+
+  @media (max-width: ${theme.screenSize.tablet}) {
+  }
+
+  @media (max-width: ${theme.screenSize.mobileL}) {
+    div {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
     }
   }
 `;
