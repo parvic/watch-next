@@ -1,15 +1,17 @@
 /* eslint-disable camelcase */
 import React, { useContext, useEffect, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 import { getMovieDetail } from '../../services/movie-services';
 import { MovieContext } from '../../context/MovieContext';
 import { Header } from '../../components/Header';
 import { Credits } from '../../components/Credits';
-
-import * as S from './style';
 import SimilarMovies from '../../components/SimilarMovies';
 import Social from '../../components/Social';
+
+import * as S from './style';
+import theme from '../../styles/theme/light';
 
 interface MovieDetailProps {
   id: number;
@@ -96,29 +98,45 @@ function MovieInfo({
   overview,
   genres,
 }: MovieInfoProps) {
+  const smallScreen = useMediaQuery({
+    query: `(max-width: ${theme.screenSize.mobileL})`,
+  });
+
+  const bigScreen = useMediaQuery({
+    query: `(max-width: ${theme.screenSize.tablet})`,
+  });
   return (
     <S.MovieInfoContainer>
       <div className="movie-general">
         <h1>{title}</h1>
         <p className="original-title">{original_title}</p>
-        <span className="release-year">{release_date.slice(0, 4)}</span>
-        <span className="genre">
-          {genres.map(genre => {
-            return genre === genres[genres.length - 1]
-              ? genre.name
-              : `${genre.name} & `;
-          })}
-        </span>
-        <span className="pg">PG13</span>
-        <span className="runtime">{`${runtime} minutes`}</span>
+        <div className="bullet-info">
+          <span className="release-year">{release_date.slice(0, 4)}</span>
+          <span className="genre">
+            {genres.map(genre => {
+              return genre === genres[genres.length - 1]
+                ? genre.name
+                : `${genre.name} & `;
+            })}
+          </span>
+          <span className="pg">PG13</span>
+          <span className="runtime">{`${runtime} minutes`}</span>
+        </div>
         <p className="sinopse">{overview}</p>
         <Social movieId={id} />
       </div>
       <div className="poster">
-        <img
-          src={`https://image.tmdb.org/t/p/w300${poster_path}`}
-          alt={title}
-        />
+        {smallScreen ? (
+          <img
+            src={`https://image.tmdb.org/t/p/w300${backdrop_path}`}
+            alt={title}
+          />
+        ) : (
+          <img
+            src={`https://image.tmdb.org/t/p/w780${poster_path}`}
+            alt={title}
+          />
+        )}
       </div>
     </S.MovieInfoContainer>
   );

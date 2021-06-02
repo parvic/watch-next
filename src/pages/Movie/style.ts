@@ -16,7 +16,7 @@ export const MovieInfoContainer = styled.div`
 
   .movie-general {
     /* max-width: 60%; */
-    margin: 1.5rem 0;
+    padding: 1.5rem 0;
     grid-area: text;
 
     h1 {
@@ -32,17 +32,21 @@ export const MovieInfoContainer = styled.div`
       margin-bottom: 1.5rem;
     }
 
-    span {
-      color: ${theme.colors.lightText};
-      & + span {
-        margin-left: 2.5rem;
+    .bullet-info {
+      display: flex;
+      align-items: center;
+      & > span {
+        color: ${theme.colors.lightText};
+        & + span {
+          margin-left: 2.5rem;
+        }
       }
-    }
 
-    .pg {
-      padding: 0.25rem;
-      border: 1px solid ${theme.colors.lightText};
-      border-radius: 0.25rem;
+      .pg {
+        padding: 0.25rem;
+        border: 1px solid ${theme.colors.lightText};
+        border-radius: 0.25rem;
+      }
     }
 
     .sinopse {
@@ -73,7 +77,57 @@ export const MovieInfoContainer = styled.div`
     img {
       width: 20rem;
       border-radius: 0.25rem;
-      border: 12px solid rgba(0, 0, 0, 0);
+    }
+  }
+
+  @media (max-width: ${theme.screenSize.laptop}) {
+  }
+
+  @media (max-width: ${theme.screenSize.tablet}) {
+  }
+
+  @media (max-width: ${theme.screenSize.mobileL}) {
+    grid-template-columns: none;
+    position: relative;
+    grid-template-rows: 1fr 3fr;
+    grid-template-areas:
+      'poster'
+      'text';
+
+    .bullet-info {
+      & > span {
+        color: ${theme.colors.lightText};
+        & + span {
+          margin-left: 0;
+          margin-bottom: 0.5rem;
+        }
+
+        .runtime {
+          text-align: right;
+        }
+      }
+
+      .pg {
+        padding: 0.25rem;
+        border: 1px solid ${theme.colors.lightText};
+        border-radius: 0.25rem;
+      }
+    }
+
+    .poster {
+      width: 100%;
+      img {
+        top: 0;
+        left: 0;
+        width: 100%;
+        position: absolute;
+        z-index: -1;
+        mask-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 1),
+          rgba(0, 0, 0, 0)
+        );
+      }
     }
   }
 `;

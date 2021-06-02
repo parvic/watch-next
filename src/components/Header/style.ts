@@ -12,7 +12,7 @@ export const HeaderContainer = styled.div`
 
   .logo {
     img {
-      width: 150px;
+      width: 4rem;
     }
   }
 
@@ -20,12 +20,12 @@ export const HeaderContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-
     margin-left: 2rem;
+
+    font-size: 1.5rem;
 
     a {
       color: #fff;
-
       transition: color 0.2s;
 
       & + a {
@@ -66,6 +66,10 @@ export const HeaderContainer = styled.div`
     .logo {
       margin: 0 auto;
       margin-bottom: 0.5rem;
+
+      img {
+        width: 150px;
+      }
     }
 
     .menu {
