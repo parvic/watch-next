@@ -29,7 +29,7 @@ export const HomeMain = styled.main`
 
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center; */
+  justify-content: center;
 
   margin: 0 auto;
 
