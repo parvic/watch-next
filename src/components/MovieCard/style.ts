@@ -7,11 +7,10 @@ export const MovieCardContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 
   /* margin: 0.5rem; */
 
-  div {
-    position: relative;
 
     img {
       border-radius: 0.5rem;

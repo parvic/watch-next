@@ -8,6 +8,7 @@ import { Header } from '../../components/Header';
 import { Credits } from '../../components/Credits';
 
 import * as S from './style';
+import SimilarMovies from '../../components/SimilarMovies';
 
 interface MovieDetailProps {
   id: number;
@@ -46,26 +47,27 @@ export default function Details() {
     fetchMovieDetail(params.movieId);
   }, [setMovieDetail, params]);
 
-  // if (loading) return <h1>wait</h1>;
-
   return (
-    <S.MovieDetailsContainer>
+    <>
       <Header />
-      {movieDetail && (
-        <MovieInfo
-          id={movieDetail.id}
-          title={movieDetail.title}
-          release_date={movieDetail.release_date}
-          poster_path={movieDetail.poster_path}
-          backdrop_path={movieDetail.backdrop_path}
-          original_title={movieDetail.original_title}
-          runtime={movieDetail.runtime}
-          overview={movieDetail.overview}
-          genres={movieDetail.genres}
-        />
-      )}
-      {movieDetail && <Credits movieId={movieDetail.id} />}
-    </S.MovieDetailsContainer>
+      <S.MovieDetailsContainer>
+        {movieDetail && (
+          <MovieInfo
+            id={movieDetail.id}
+            title={movieDetail.title}
+            release_date={movieDetail.release_date}
+            poster_path={movieDetail.poster_path}
+            backdrop_path={movieDetail.backdrop_path}
+            original_title={movieDetail.original_title}
+            runtime={movieDetail.runtime}
+            overview={movieDetail.overview}
+            genres={movieDetail.genres}
+          />
+        )}
+        {movieDetail && <Credits movieId={movieDetail.id} />}
+        {movieDetail && <SimilarMovies movieId={movieDetail.id} />}
+      </S.MovieDetailsContainer>
+    </>
   );
 }
 

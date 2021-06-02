@@ -44,29 +44,36 @@ export function Credits({ movieId }: CreditsProps) {
   return (
     <S.MovieCrewContainer>
       <div className="cast">
-        {movieCast &&
-          movieCast.slice(0, 5).map(cast => {
-            return (
-              <div>
-                <img
-                  style={{ width: '5rem', height: '5rem', objectFit: 'cover' }}
-                  src={`https://image.tmdb.org/t/p/w185${cast.profile_path}`}
-                  alt=""
-                />
-                <p>{cast.name}</p>
-              </div>
-            );
-          })}
+        <h2>Elenco</h2>
+        <div className="cast-card">
+          {movieCast &&
+            movieCast.slice(0, 5).map(cast => {
+              return (
+                <div key={cast.id}>
+                  <img
+                    style={{
+                      width: '5rem',
+                      height: '5rem',
+                      objectFit: 'cover',
+                    }}
+                    src={`https://image.tmdb.org/t/p/w185${cast.profile_path}`}
+                    alt=""
+                  />
+                  <p>{cast.name}</p>
+                </div>
+              );
+            })}
+        </div>
       </div>
       <div className="crew">
-        <span className="director">Director</span>
+        <span className="director">Diretor</span>
         <span className="director-name">
           {movieCrew &&
             movieCrew.map(crew => {
               return crew.job === 'Director' && crew.name;
             })}
         </span>
-        <span className="writers">Writer(s)</span>
+        <span className="writers">Roteirista(s)</span>
         <span className="writers-names">
           {movieCrew &&
             movieCrew.map(crew => {

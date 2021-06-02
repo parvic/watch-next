@@ -13,12 +13,10 @@ interface MovieCardProps {
 export function MovieCard({ id, title, release_date, poster }: MovieCardProps) {
   return (
     <S.MovieCardContainer>
+      <img src={poster && poster} alt="poster" />
       <div>
-        <img src={poster && poster} alt="poster" />
-        <div>
-          <p className="title">{title && title}</p>
-          <p className="release">{release_date && release_date}</p>
-        </div>
+        <p className="title">{title && title}</p>
+        <p className="release">{release_date && release_date}</p>
       </div>
       {/* <a href="https://www.themoviedb.org/" className="title">
         <p>Title</p>

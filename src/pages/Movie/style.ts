@@ -8,7 +8,7 @@ export const MovieDetailsContainer = styled.div`
 `;
 
 export const MovieInfoContainer = styled.div`
-  max-width: 90%;
+  max-width: 100%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 2fr 1fr;

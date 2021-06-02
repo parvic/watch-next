@@ -10,28 +10,34 @@ export const MovieCrewContainer = styled.div`
   flex: 1;
 
   .cast {
-    max-width: 60%;
+    h2 {
+      margin-bottom: 1rem;
+    }
 
-    display: flex;
+    .cast-card {
+      max-width: 60%;
 
-    & > div {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 7rem;
 
-      img {
-        width: 5rem;
-        margin-bottom: 0.5rem;
-        border-radius: 50%;
-      }
+      & > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 7rem;
 
-      p {
-        text-align: center;
-      }
+        img {
+          width: 5rem;
+          margin-bottom: 0.5rem;
+          border-radius: 50%;
+        }
 
-      & + div {
-        margin-left: 1.5rem;
+        p {
+          text-align: center;
+        }
+
+        & + div {
+          margin-left: 1.5rem;
+        }
       }
     }
   }

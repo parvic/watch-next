@@ -4,18 +4,22 @@ import React, { createContext, ReactNode, useEffect, useState } from 'react';
 import {
   getMovieDetail,
   getSearchResult,
+  getSimilarMovies,
   getTrendingMovies,
 } from '../services/movie-services';
 
 interface MovieContextData {
   movies: MovieProps[];
-  featuredMovie: MovieProps | undefined;
   queryMovies: MovieProps[];
+  similarMovies: MovieProps[];
+  featuredMovie: MovieProps | undefined;
   movieDetail: MovieDetailProps | undefined;
+  handleMovieDetailId: (movieId: number) => void;
   fetchTrendingMovies: (page: number) => void;
   updateTrendingMovies: (page: number) => void;
   handleMovieDetail: (movieDetail: MovieDetailProps) => void;
   fetchFeaturedMovie: () => void;
+  fetchSimilarMovies: (movieId: number) => void;
   handleQueryMovies: (queryMovies: MovieProps[]) => void;
   handleSearchMovies: (movieName: string) => void;
   // fetchMovieDetail: (mId: string) => void;
@@ -56,13 +60,19 @@ interface SocialProps {
 export const MovieContext = createContext({} as MovieContextData);
 
 export function MovieProvider({ children }: MovieProviderProps) {
+  const [movieDetailId, setMovieDetailId] = useState<number>(0);
   const [movies, setMovies] = useState<MovieProps[]>([]);
+  const [similarMovies, setsimilarMovies] = useState<MovieProps[]>([]);
   const [featuredMovie, setFeaturedMovie] = useState<MovieProps>();
   const [queryMovies, setQueryMovies] = useState<MovieProps[]>([]);
   const [movieDetail, setMovieDetail] = useState<MovieDetailProps>();
 
-  function handleQueryMovies(qMovies: MovieProps[]) {
+  function handleQueryMovies() {
     setQueryMovies(queryMovies);
+  }
+
+  function handleMovieDetailId(movieId: number) {
+    setMovieDetailId(movieId);
   }
 
   async function fetchTrendingMovies(page: number) {
@@ -82,6 +92,11 @@ export function MovieProvider({ children }: MovieProviderProps) {
     setFeaturedMovie(data.results[0]);
   }
 
+  async function fetchSimilarMovies(movieId: number) {
+    const { data } = await getSimilarMovies(movieId);
+    setsimilarMovies(data.results);
+  }
+
   async function handleMovieDetail() {
     setMovieDetail(movieDetail);
   }
@@ -99,13 +114,16 @@ export function MovieProvider({ children }: MovieProviderProps) {
     <MovieContext.Provider
       value={{
         movies,
-        featuredMovie,
+        similarMovies,
         queryMovies,
+        featuredMovie,
         movieDetail,
+        handleMovieDetailId,
         fetchTrendingMovies,
         updateTrendingMovies,
         handleMovieDetail,
         fetchFeaturedMovie,
+        fetchSimilarMovies,
         handleQueryMovies,
         handleSearchMovies,
         // fetchMovieDetail,

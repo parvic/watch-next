@@ -43,3 +43,14 @@ export async function getCredits(movieId: number) {
     return { error };
   }
 }
+
+export async function getSimilarMovies(movieId: number) {
+  try {
+    const { data, status } = await api.get(
+      `/movie/${movieId}/similar?api_key=34d6e856a918914f65527a936f73f3f2&language=pt-BR`,
+    );
+    return { data, status };
+  } catch (error) {
+    return { error };
+  }
+}

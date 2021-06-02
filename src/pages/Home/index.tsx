@@ -71,13 +71,7 @@ export default function Home() {
   // poster sizes
   return (
     <>
-      <S.HomeContainer
-      // style={{
-      //   backgroundImage:
-      //     featuredMovie &&
-      //     `url( https://image.tmdb.org/t/p/w1280${featuredMovie.backdrop_path})`,
-      // }}
-      >
+      <S.HomeContainer>
         {featuredMovie && (
           <img
             src={`https://image.tmdb.org/t/p/w1280${featuredMovie.backdrop_path}`}
