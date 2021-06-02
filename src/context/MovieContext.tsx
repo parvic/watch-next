@@ -27,6 +27,7 @@ interface MovieProps {
   title: string;
   release_date: string;
   poster_path: string;
+  backdrop_path: string;
 }
 
 interface MovieDetailProps {

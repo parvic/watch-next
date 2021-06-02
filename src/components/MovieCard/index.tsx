@@ -10,7 +10,7 @@ interface MovieCardProps {
   poster: string;
 }
 
-export function MovieCard({ title, release_date, poster, id }: MovieCardProps) {
+export function MovieCard({ id, title, release_date, poster }: MovieCardProps) {
   return (
     <S.MovieCardContainer>
       <div>

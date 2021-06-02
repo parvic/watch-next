@@ -16,6 +16,7 @@ export const MovieCardContainer = styled.div`
     img {
       border-radius: 0.5rem;
       width: 185px;
+      height: 278px;
       transition: filter 0.3s;
 
       &:hover {

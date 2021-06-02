@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, {
   useCallback,
   useContext,
@@ -13,6 +14,13 @@ import { Header } from '../../components/Header';
 import { MovieCard } from '../../components/MovieCard';
 
 import * as S from './style';
+
+interface MovieProps {
+  id: number;
+  title: string;
+  poster_path: string;
+  backdrop_path: string;
+}
 
 export default function Home() {
   const { movies, fetchTrendingMovies, updateTrendingMovies } =
@@ -59,9 +67,13 @@ export default function Home() {
     <>
       <S.HomeContainer>
         <Header />
-        <HomeFeatured />
+        <FeaturedMovie
+          id={movies && movies[0].id}
+          title={movies[0].title}
+          backdrop_path={movies[0].backdrop_path}
+        />
         <S.HomeMain>
-          {movies.map(movie => {
+          {movies.slice(firstLoad ? 1 : 0).map(movie => {
             return (
               <Link
                 key={movie.id}
@@ -73,9 +85,13 @@ export default function Home() {
                   id={movie.id}
                   title={movie.title}
                   release_date={
-                    movie.release_date ? movie.release_date.slice(0, 4) : ''
+                    movie.release_date ? movie.release_date.slice(0, 4) : 'TBA'
                   }
-                  poster={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
+                  poster={
+                    movie.poster_path
+                      ? `https://image.tmdb.org/t/p/w185${movie.poster_path}`
+                      : 'https://simpleicon.com/wp-content/uploads/film.png'
+                  }
                 />
               </Link>
             );
@@ -86,10 +102,18 @@ export default function Home() {
   );
 }
 
-function HomeFeatured() {
+interface FeaturedMovieProps {
+  id: number;
+  title: string;
+  backdrop_path: string;
+}
+function FeaturedMovie({ id, title, backdrop_path }: FeaturedMovieProps) {
   return (
-    <S.HomeFeatured>
-      <h1>Três Homens em conflito</h1>
-    </S.HomeFeatured>
+    <S.FeaturedMovie>
+      <h1>{title}</h1>
+      <Link to={`/movie/${id}`}>
+        <span>+ INFO</span>
+      </Link>
+    </S.FeaturedMovie>
   );
 }

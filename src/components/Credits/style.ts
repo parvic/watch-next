@@ -18,11 +18,16 @@ export const MovieCrewContainer = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
+      max-width: 7rem;
 
       img {
         width: 5rem;
         margin-bottom: 0.5rem;
         border-radius: 50%;
+      }
+
+      p {
+        text-align: center;
       }
 
       & + div {
