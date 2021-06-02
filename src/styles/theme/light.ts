@@ -1,6 +1,6 @@
 export default {
   colors: {
-    background: '#111', // '#E0E2ED',
+    background: '#000', // '#E0E2ED',
     navbar: '#222D54',
     sectionBackground: '#FFFFFF',
     menuText: '#9CADC3',

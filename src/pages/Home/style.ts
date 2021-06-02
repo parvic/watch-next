@@ -13,11 +13,7 @@ export const HomeContainer = styled.div`
     position: absolute;
     width: 100%;
     z-index: -1;
-    mask-image: linear-gradient(
-      to bottom,
-      rgba(17, 17, 17, 1),
-      rgba(17, 17, 17, 0)
-    );
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
   }
 
   /* background-image: linear-gradient(to bottom, transparent, #111),
@@ -36,6 +32,10 @@ export const HomeMain = styled.main`
   /* justify-content: center; */
 
   margin: 0 auto;
+
+  a {
+    margin: 0.5rem;
+  }
 `;
 
 export const FeaturedMovie = styled.div`

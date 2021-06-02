@@ -8,7 +8,7 @@ export const HeaderContainer = styled.div`
   align-items: center;
   /* justify-content: space-between; */
 
-  margin: 1rem;
+  padding: 2rem;
 
   .logo {
     img {

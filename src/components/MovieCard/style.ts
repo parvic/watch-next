@@ -8,7 +8,7 @@ export const MovieCardContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin: 0.5rem;
+  /* margin: 0.5rem; */
 
   div {
     position: relative;
