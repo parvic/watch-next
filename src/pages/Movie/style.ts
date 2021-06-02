@@ -69,6 +69,7 @@ export const MovieInfoContainer = styled.div`
   .poster {
     grid-area: poster;
     margin: 0 auto;
+
     img {
       width: 20rem;
       border-radius: 0.25rem;

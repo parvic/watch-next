@@ -15,7 +15,6 @@ export default function SimilarMovies({ movieId }: SimilarMoviesProps) {
 
   useEffect(() => {
     fetchSimilarMovies(movieId);
-    console.log(similarMovies);
   }, [movieId]);
 
   return (

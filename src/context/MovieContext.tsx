@@ -6,6 +6,7 @@ import {
   getSearchResult,
   getSimilarMovies,
   getTrendingMovies,
+  getMovieSocial,
 } from '../services/movie-services';
 
 interface MovieContextData {
@@ -14,8 +15,10 @@ interface MovieContextData {
   similarMovies: MovieProps[];
   featuredMovie: MovieProps | undefined;
   movieDetail: MovieDetailProps | undefined;
+  movieSocial: SocialProps | undefined;
   handleMovieDetailId: (movieId: number) => void;
   fetchTrendingMovies: (page: number) => void;
+  fetchMovieSocial: (movieId: number) => void;
   updateTrendingMovies: (page: number) => void;
   handleMovieDetail: (movieDetail: MovieDetailProps) => void;
   fetchFeaturedMovie: () => void;
@@ -62,6 +65,7 @@ export const MovieContext = createContext({} as MovieContextData);
 export function MovieProvider({ children }: MovieProviderProps) {
   const [movieDetailId, setMovieDetailId] = useState<number>(0);
   const [movies, setMovies] = useState<MovieProps[]>([]);
+  const [movieSocial, setMovieSocial] = useState<SocialProps>();
   const [similarMovies, setsimilarMovies] = useState<MovieProps[]>([]);
   const [featuredMovie, setFeaturedMovie] = useState<MovieProps>();
   const [queryMovies, setQueryMovies] = useState<MovieProps[]>([]);
@@ -88,13 +92,18 @@ export function MovieProvider({ children }: MovieProviderProps) {
   }
 
   async function fetchFeaturedMovie() {
-    const { data } = await getTrendingMovies(2);
+    const { data } = await getTrendingMovies(1);
     setFeaturedMovie(data.results[0]);
   }
 
   async function fetchSimilarMovies(movieId: number) {
     const { data } = await getSimilarMovies(movieId);
     setsimilarMovies(data.results);
+  }
+
+  async function fetchMovieSocial(movieId: number) {
+    const { data } = await getMovieSocial(movieId);
+    setMovieSocial(data);
   }
 
   async function handleMovieDetail() {
@@ -107,7 +116,7 @@ export function MovieProvider({ children }: MovieProviderProps) {
   }
 
   useEffect(() => {
-    // fetchFeaturedMovie();
+    fetchMovieSocial(100);
   }, []);
 
   return (
@@ -118,8 +127,10 @@ export function MovieProvider({ children }: MovieProviderProps) {
         queryMovies,
         featuredMovie,
         movieDetail,
+        movieSocial,
         handleMovieDetailId,
         fetchTrendingMovies,
+        fetchMovieSocial,
         updateTrendingMovies,
         handleMovieDetail,
         fetchFeaturedMovie,

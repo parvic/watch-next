@@ -9,6 +9,7 @@ import { Credits } from '../../components/Credits';
 
 import * as S from './style';
 import SimilarMovies from '../../components/SimilarMovies';
+import Social from '../../components/Social';
 
 interface MovieDetailProps {
   id: number;
@@ -35,6 +36,7 @@ interface MovieParams {
 }
 
 export default function Details() {
+  const { fetchMovieSocial, movieSocial } = useContext(MovieContext);
   const { params } = useRouteMatch<MovieParams>();
   const [movieDetail, setMovieDetail] = useState<MovieDetailProps>();
 
@@ -110,26 +112,7 @@ function MovieInfo({
         <span className="pg">PG13</span>
         <span className="runtime">{`${runtime} minutes`}</span>
         <p className="sinopse">{overview}</p>
-        <div className="trailer">
-          <a href="/">
-            <img
-              src="https://www.themoviedb.org/t/p/original/hcWBV1zDoMOxAbyaVbj7SNSPgPg.jpg"
-              alt=""
-            />
-          </a>
-          <a href="/">
-            <img
-              src="https://www.themoviedb.org/t/p/original/hcWBV1zDoMOxAbyaVbj7SNSPgPg.jpg"
-              alt=""
-            />
-          </a>
-          <a href="/">
-            <img
-              src="https://www.themoviedb.org/t/p/original/hcWBV1zDoMOxAbyaVbj7SNSPgPg.jpg"
-              alt=""
-            />
-          </a>
-        </div>
+        <Social movieId={id} />
       </div>
       <div className="poster">
         <img
