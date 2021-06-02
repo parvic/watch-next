@@ -9,13 +9,13 @@ const GlobalStyles = createGlobalStyle`
       box-sizing: border-box;
     }
 
-  @media (max-width: 1080px) {
+  @media (max-width: ${theme.screenSize.laptop}) {
     html {
       font-size: 93.75%;
     }
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: ${theme.screenSize.tablet}) {
     html {
       font-size: 87.5%;
     }

@@ -18,6 +18,6 @@ export default {
     mobileL: '425px',
     tablet: '768px',
     laptop: '1024px',
-    fhd: '1920px',
+    fhd: '1080px',
   },
 } as const;

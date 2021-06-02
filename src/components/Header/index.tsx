@@ -1,14 +1,30 @@
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 import { Search } from '../Search';
+import theme from '../../styles/theme/light';
 
 import * as S from './style';
+import logoLarge from '../../assets/images/tmdb-logo-large.svg';
+import logoSmall from '../../assets/images/tmdb-logo-small.svg';
 
 export function Header() {
+  const smallScreen = useMediaQuery({
+    query: `(max-width: ${theme.screenSize.mobileL})`,
+  });
+
+  const bigScreen = useMediaQuery({
+    query: `(max-width: ${theme.screenSize.tablet})`,
+  });
+
   return (
     <S.HeaderContainer>
       <div className="logo">
-        <img src="images/tmdb-logo.png" alt="TMBD Logo" />
+        {smallScreen ? (
+          <img src={logoLarge} alt="TMBD Logo" />
+        ) : (
+          <img src={logoSmall} alt="TMBD Logo" />
+        )}
       </div>
 
       <div className="menu">

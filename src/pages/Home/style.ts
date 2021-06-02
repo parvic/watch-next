@@ -16,11 +16,13 @@ export const HomeContainer = styled.div`
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
   }
 
-  /* background-image: linear-gradient(to bottom, transparent, #111),
-    url('https://image.tmdb.org/t/p/w1280/hJuDvwzS0SPlsE6MNFOpznQltDZ.jpg');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: top; */
+  @media (max-width: ${theme.screenSize.tablet}) {
+    max-width: 768px;
+  }
+
+  @media (max-width: ${theme.screenSize.laptop}) {
+    max-width: 1024px;
+  }
 `;
 
 export const HomeMain = styled.main`
@@ -35,6 +37,21 @@ export const HomeMain = styled.main`
 
   a {
     margin: 0.5rem;
+  }
+
+  @media (max-width: ${theme.screenSize.mobileL}) {
+    min-height: 200px;
+    max-height: 300px;
+  }
+
+  @media (max-width: ${theme.screenSize.tablet}) {
+    min-height: 300px;
+    max-height: 400px;
+  }
+
+  @media (max-width: ${theme.screenSize.laptop}) {
+    min-height: 400px;
+    max-height: 500px;
   }
 `;
 
@@ -72,6 +89,30 @@ export const FeaturedMovie = styled.div`
 
     &:hover {
       filter: brightness(0.9);
+    }
+  }
+
+  @media (max-width: ${theme.screenSize.laptop}) {
+    min-height: 400px;
+    max-height: 500px;
+  }
+
+  @media (max-width: ${theme.screenSize.tablet}) {
+    min-height: 300px;
+    max-height: 400px;
+  }
+
+  @media (max-width: ${theme.screenSize.mobileL}) {
+    min-height: 200px;
+    max-height: 300px;
+
+    h1 {
+      margin-left: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      margin-left: 3rem;
     }
   }
 `;

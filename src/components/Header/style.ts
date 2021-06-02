@@ -12,7 +12,7 @@ export const HeaderContainer = styled.div`
 
   .logo {
     img {
-      width: 4rem;
+      width: 150px;
     }
   }
 
@@ -57,5 +57,38 @@ export const HeaderContainer = styled.div`
         color: #969CB2;
       }
     } */
+  }
+
+  @media (max-width: ${theme.screenSize.mobileL}) {
+    flex-direction: column;
+    padding: 1rem;
+
+    .logo {
+      margin: 0 auto;
+      margin-bottom: 0.5rem;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      margin-left: 0;
+      margin-bottom: 1rem;
+
+      a + a {
+        margin-left: 4rem;
+      }
+    }
+
+    .search {
+      margin-left: 0;
+    }
+  }
+
+  @media (max-width: ${theme.screenSize.tablet}) {
+  }
+
+  @media (max-width: ${theme.screenSize.laptop}) {
   }
 `;
