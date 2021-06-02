@@ -68,7 +68,7 @@ export function Credits({ movieId }: CreditsProps) {
                       objectFit: 'cover',
                     }}
                     src={`https://image.tmdb.org/t/p/w185${cast.profile_path}`}
-                    alt=""
+                    alt={cast.name}
                   />
                   <p>{cast.name}</p>
                 </div>

@@ -15,6 +15,7 @@ export const SimilarMoviesContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
 
     a {
       margin: 1rem;

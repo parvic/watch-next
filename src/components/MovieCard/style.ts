@@ -16,13 +16,13 @@ export const MovieCardContainer = styled.div`
     width: 185px;
     height: 278px;
     transition: filter 0.3s;
-
-    &:hover {
-      filter: brightness(0.5);
-    }
   }
 
   transition: all 0.3s;
+
+  &:hover img {
+    filter: brightness(0.5);
+  }
 
   &:hover {
     transform: translateY(-7px);

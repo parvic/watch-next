@@ -12,6 +12,8 @@ export const MovieCrewContainer = styled.div`
     }
 
     .cast-card {
+      display: flex;
+      justify-content: space-between;
       max-width: 60%;
       display: flex;
 

@@ -47,7 +47,6 @@ export default function Home() {
           setPage(state => state + 1);
         }
       });
-
       if (node) scrollObserver.current.observe(node);
     },
     [setPage, loading],
@@ -68,7 +67,10 @@ export default function Home() {
     }
   }, [page, finalPage]);
 
-  // poster sizes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <S.HomeContainer>

@@ -49,6 +49,7 @@ export default function Details() {
 
   useEffect(() => {
     fetchMovieDetail(params.movieId);
+    window.scrollTo(0, 0);
   }, [setMovieDetail, params]);
 
   return (

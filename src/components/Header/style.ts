@@ -22,7 +22,7 @@ export const HeaderContainer = styled.div`
     justify-content: flex-start;
     margin-left: 2rem;
 
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 
     a {
       color: #fff;
@@ -64,8 +64,7 @@ export const HeaderContainer = styled.div`
     padding: 1rem;
 
     .logo {
-      margin: 0 auto;
-      margin-bottom: 0.5rem;
+      margin: 1.5rem 0;
 
       img {
         width: 150px;
@@ -75,13 +74,13 @@ export const HeaderContainer = styled.div`
     .menu {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: space-between;
 
       margin-left: 0;
       margin-bottom: 1rem;
 
       a + a {
-        margin-left: 4rem;
+        margin-left: 2rem;
       }
     }
 
