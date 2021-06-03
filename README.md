@@ -70,7 +70,7 @@
 
 [![Watch Next][part-2]](https://watch-next.vercel.app/)
 
-Using the TMDB API, we are able to get lots of information about movies. Allied to an awesome interface, we are now sharing a way to know information about the trending movies.
+Using the TMDB API, we can get lots of information about movies. Allied to an awesome interface, we are now sharing a way to know information about the trending movies.
 
 ### Built With
 
@@ -122,9 +122,9 @@ You'll also need Node.js installed. Download it from the link below.
 
 Just by scrolling down, you can run through a list of the trending movies on the platform, according to other users. You can also click on one of these movies and obtain more information about it.
 
-### Seraching a movie
+### Searching a movie
 
-There is an area where you can search for a movie. The search is done after you finish typing the name of the movie you are looking for. The search will return a list with the first 20 movies that matchs most your search
+There is an area where you can search for a movie. The search is done after you finish typing the name of the movie you are looking for. The search will return a list with the first 20 movies that matches most your search
 
 <!--_For more examples, please refer to the [Documentation](https://example.com)_ -->
 
