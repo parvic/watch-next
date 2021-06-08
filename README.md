@@ -187,6 +187,6 @@ Project Link: [https://github.com/parvic/watch-next](https://github.com/parvic/w
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/victorprnt
 [product-screenshot]: https://i.imgur.com/r58J2V8.gif
-[part-1]: https://media.giphy.com/media/bfFwYOdns5iahn8cJo/giphy.gif
-[part-2]: https://media.giphy.com/media/lhNtDnBcU1LXEKNLTy/giphy.gif
+[part-1]: https://i.giphy.com/media/lhNtDnBcU1LXEKNLTy/giphy.webp
+[part-2]: https://i.giphy.com/media/bfFwYOdns5iahn8cJo/giphy.webp
 [notion-project]: https://www.notion.so/parvic/Agenda-Edu-Desafio-Front-end-508e4466af96497d8baef8aa434faf82
